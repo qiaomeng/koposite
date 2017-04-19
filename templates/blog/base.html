@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/myblog.css' %}">
+    <title>Django Simple Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a simple django blog!">
+    <title>Simple Django Blog</title>
+    <link rel="shortcut icon" href="{% static 'img/icon.png' %}">
+</head>
+<body>
+    <div class="page-header">
+        <div class="row">
+        <div style="float: left" > <h1><a href="/">Django Simple Blog</a></h1></div>
+        <div style="float: right">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-pencil"></span> 新建</a></li>
+                <li class="active"><a href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-th-list"></span> 草稿箱</a></li>
+            </ul>
+        </div>
+            </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

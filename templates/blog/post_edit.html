@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <script type="text/javascript" charset="utf8" src="/static/js/kindeditor-4.1.10/kindeditor.js"></script>
+    <script type="text/javascript" charset="utf8" src="/static/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K){
+                    editor = K.create('textarea[name="text"]',{
+                        resizeType : 1,
+                    allowPreviewEmoticons : false,
+                    <!--去掉远程上传的功能-->
+                    allowImageRemote : false,
+                    <!--后台处理上传图片的功url-->
+                    uploadJson : 'uploadImg/',
+                    items : [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+                    });
+                })
+                </script>
+    <h3>New post</h3>
+    <form method="POST" class="post-form">{% csrf_token %}
+        <label>title</label>
+        <input class="pure-input-1-4" name="title" type="text">
+        <label>text</label>
+        <textarea style="width:700px;height:400px;"  name='text'>&lt;strong&gt;HTML&lt;/strong&gt;</textarea>
+        <label>category</label>
+        <input class="pure-input-1-4" name="category" type="text">
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
